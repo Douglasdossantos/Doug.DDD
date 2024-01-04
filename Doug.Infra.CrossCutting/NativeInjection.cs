@@ -11,14 +11,14 @@ namespace Doug.Infra.CrossCutting
     {
         public static IServiceCollection InjetarDependenciasExtensions(this IServiceCollection services)
         {
-            //Injetando serviços
-            services.AddTransient<IWeatherForecastService, WeatherForecastService>();
+      
+            services.AddScoped<IWeatherForecastService, WeatherForecastService>();
 
-            //Injetando repositorios
-            services.AddTransient<IWeatherForecastRepository, WeatherForecastRepository>();
+          
+            services.AddScoped<IWeatherForecastRepository, WeatherForecastRepository>();
 
-            //Adicionando Banco de dados
-            services.AddTransient<IUnitOfWork<MyDbContext>, UnitOfWork<MyDbContext>>();
+
+            services.AddScoped<IUnitOfWork<MyDbContext>, UnitOfWork<MyDbContext>>();
             services.AddDbContextFactory<MyDbContext>();
 
             return services;

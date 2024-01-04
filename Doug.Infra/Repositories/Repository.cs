@@ -41,7 +41,5 @@ namespace Doug.Infra.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-
-
     }
 }
