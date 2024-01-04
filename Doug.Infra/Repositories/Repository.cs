@@ -7,24 +7,24 @@ namespace Doug.Infra.Repositories
     public class Repository<TEntity, TPK>: IRepository<TEntity,TPK> where TEntity : BaseEntity<TPK>
     {
         private readonly DbContext _context;
-        private readonly DbSet<TEntity> _dbset;
+        protected readonly DbSet<TEntity> _dbSet; // Caso queira que as propriedade seja acessivel nas classes que herdarem essa ela precisa ser PROTECTED. PRIVATE restringe o acesso a propria classe
 
         public Repository(DbContext context)
         {
             _context = context;
-            _dbset = _context.Set<TEntity>();
+            _dbSet = _context.Set<TEntity>();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsnc()
-            => await _dbset.ToListAsync();
+            => await _dbSet.ToListAsync();
         public async Task<TEntity?> GetByIdAsync(TPK id)
-            => await _dbset.FindAsync(id);
+            => await _dbSet.FindAsync(id);
 
         public async Task InsertAsync(TEntity entity)
-            => await _dbset.AddAsync(entity);
+            => await _dbSet.AddAsync(entity);
         public async Task UpdateAsync(TEntity entity)
         {
-            var result = await _dbset.FindAsync(entity.Id);
+            var result = await _dbSet.FindAsync(entity.Id);
             if (result != null) 
             {
                 _context.Entry(result).CurrentValues.SetValues(entity);
@@ -33,10 +33,10 @@ namespace Doug.Infra.Repositories
 
         public async Task DeleteAsync(TPK id)
         {
-            var entity = await _dbset.FindAsync(id);
+            var entity = await _dbSet.FindAsync(id);
             if (entity != null) 
             {
-                _dbset.Remove(entity);
+                _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
         }
