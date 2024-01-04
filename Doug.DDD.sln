@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doug.Infra", "Doug.Infra\Do
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doug.Infra.CrossCutting", "Doug.Infra.CrossCutting\Doug.Infra.CrossCutting.csproj", "{E568A630-D59F-4E4D-8054-5FEA29A2F6D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dougl.Service", "Dougl.Service\Dougl.Service.csproj", "{BBA2AAA3-61D4-4286-A068-6DF041816779}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Doug.Service", "Dougl.Service\Doug.Service.csproj", "{BBA2AAA3-61D4-4286-A068-6DF041816779}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dougl.Test", "Dougl.Test\Dougl.Test.csproj", "{377D34D3-C321-4E37-88A0-76E0096B9126}"
 EndProject

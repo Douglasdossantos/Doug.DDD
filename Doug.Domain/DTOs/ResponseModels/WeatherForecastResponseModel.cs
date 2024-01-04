@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Doug.Domain.Interfaces.Repository
+namespace Doug.Domain.DTOs.ResponseModels
 {
-    public interface IUnitOfWork<TContext>
+    public class WeatherForecastResponseModel
     {
-        Task CommitAsync();
+        public int MyProperty { get; set; }
     }
 }

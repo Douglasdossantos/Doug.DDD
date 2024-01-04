@@ -16,7 +16,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Doug.Infra.CrossCutting\Doug.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\Doug.Infra\Doug.Infra.csproj" />
-    <ProjectReference Include="..\Dougl.Service\Dougl.Service.csproj" />
+    <ProjectReference Include="..\Dougl.Service\Doug.Service.csproj" />
   </ItemGroup>
 
 </Project>

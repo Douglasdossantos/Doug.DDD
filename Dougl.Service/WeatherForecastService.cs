@@ -1,14 +1,9 @@
 ﻿using AutoMapper;
 using Doug.Domain.DTOs.OutputModels;
-using Doug.Domain.Interfaces.Repository;
+using Doug.Domain.Interfaces.Repositories;
 using Doug.Domain.Interfaces.Services;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Dougl.Service
+namespace Doug.Service
 {
     public class WeatherForecastService : IWeatherForecastService
     {

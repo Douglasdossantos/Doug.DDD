@@ -1,4 +1,4 @@
-namespace Dougl.Test
+namespace Doug.Test
 {
     public class UnitTest1
     {

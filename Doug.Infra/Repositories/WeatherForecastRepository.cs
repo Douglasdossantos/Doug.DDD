@@ -1,6 +1,5 @@
 ﻿using Doug.Domain.Entities;
-using Doug.Domain.Interfaces.Repository;
-
+using Doug.Domain.Interfaces.Repositories;
 
 namespace Doug.Infra.Repositories
 {
@@ -15,7 +14,12 @@ namespace Doug.Infra.Repositories
 
         public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
         {
-            return _dbSet.Tolist();
+            throw new NotImplementedException();
         }
+
+        //public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
+        //{
+        //    return _dbSet.Tolist();
+        //}
     }
 }
