@@ -14,7 +14,7 @@ namespace Doug.Infra.Repositories
 
         public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
         {
-            return _dbSet.ToList();
+            return _dbset.ToList();
         }
     }
 }

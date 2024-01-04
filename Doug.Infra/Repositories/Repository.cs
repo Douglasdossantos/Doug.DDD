@@ -6,8 +6,8 @@ namespace Doug.Infra.Repositories
 {
     public class Repository<TEntity, TPK>: IRepository<TEntity,TPK> where TEntity : BaseEntity<TPK>
     {
-        private readonly DbContext _context;
-        protected readonly DbSet<TEntity> _dbSet; // Caso queira que as propriedade seja acessivel nas classes que herdarem essa ela precisa ser PROTECTED. PRIVATE restringe o acesso a propria classe
+        protected readonly DbContext _context;
+        protected readonly DbSet<TEntity> _dbset;
 
         public Repository(DbContext context)
         {
@@ -21,7 +21,8 @@ namespace Doug.Infra.Repositories
             => await _dbSet.FindAsync(id);
 
         public async Task InsertAsync(TEntity entity)
-            => await _dbSet.AddAsync(entity);
+            => await _dbset.AddAsync(entity);
+            
         public async Task UpdateAsync(TEntity entity)
         {
             var result = await _dbSet.FindAsync(entity.Id);
@@ -40,7 +41,5 @@ namespace Doug.Infra.Repositories
                 await _context.SaveChangesAsync();
             }
         }
-
-
     }
 }
