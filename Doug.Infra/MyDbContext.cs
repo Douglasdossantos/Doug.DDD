@@ -1,4 +1,5 @@
 ﻿using Doug.Domain.Entities;
+using Doug.Infra.Configurations;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -29,9 +30,11 @@ namespace Doug.Infra
                     .Where(p => p.ClrType == typeof(string))))
                 property.SetColumnType("varchar(100)");
 
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(MyDbContext).Assembly);
+            modelBuilder.ApplyConfiguration(new WeatherForecastConfiguration());
 
-            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(MyDbContext).Assembly);
+
+            //foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
             base.OnModelCreating(modelBuilder);
         }
 

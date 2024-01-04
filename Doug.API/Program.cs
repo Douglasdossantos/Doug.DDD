@@ -1,6 +1,7 @@
 using AutoMapper.Internal.Mappers;
 using Doug.Domain.DTOs.Configurations;
 using Doug.Infra;
+using Doug.Infra.CrossCutting;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,13 @@ builder.Services.Configure<StarWarsOptions>(builder.Configuration.GetSection("St
 builder.Services
     .AddFluentValidationAutoValidation(config => config.DisableDataAnnotationsValidation = true)
     .AddValidatorsFromAssembly(typeof(Program).Assembly);
+
+builder.Services.AddAutoMapper(typeof(MappingProfile));
+
+//builder.Services.AddAuthorization();
+//builder.Services.AddMemoryCache();
+
+//builder.Services.InjetarDependenciasExtensions();
 
 
 builder.Services.AddControllers();

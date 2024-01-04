@@ -14,12 +14,7 @@ namespace Doug.Infra.Repositories
 
         public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
         {
-            throw new NotImplementedException();
+            return _dbSet.Tolist();
         }
-
-        //public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
-        //{
-        //    return _dbSet.Tolist();
-        //}
     }
 }
