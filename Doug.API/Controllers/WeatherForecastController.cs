@@ -1,34 +1,36 @@
+using Doug.Domain.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Doug.API.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [AllowAnonymous]
     public class WeatherForecastController : BaseController
     {
-
-        private static readonly string[] Summaries = new[]
-        {
-            "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-        };
-
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly IWeatherForecastService _weatherForecastService;
 
-        //public WeatherForecastController(ILogger<WeatherForecastController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
-        [HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, IWeatherForecastService weatherForecastService)
         {
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
+            _logger = logger;
+            _weatherForecastService = weatherForecastService;
+        }
+
+        
+        [HttpGet(Name = "GetWeatherForecast")]
+        public IActionResult GetWeatherForecast()
+        {
+            try
             {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
+                var retorno = _weatherForecastService.BuscarWeatherForecast();
+                return ResultOk(retorno);
+            }
+            catch (Exception ex)
+            {
+                return ResultBadRequest(ex.Message);
+            }
         }
     }
 }

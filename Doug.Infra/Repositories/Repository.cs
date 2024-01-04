@@ -6,8 +6,8 @@ namespace Doug.Infra.Repositories
 {
     public class Repository<TEntity, TPK>: IRepository<TEntity,TPK> where TEntity : BaseEntity<TPK>
     {
-        private readonly DbContext _context;
-        private readonly DbSet<TEntity> _dbset;
+        protected readonly DbContext _context;
+        protected readonly DbSet<TEntity> _dbset;
 
         public Repository(DbContext context)
         {
@@ -22,6 +22,7 @@ namespace Doug.Infra.Repositories
 
         public async Task InsertAsync(TEntity entity)
             => await _dbset.AddAsync(entity);
+
         public async Task UpdateAsync(TEntity entity)
         {
             var result = await _dbset.FindAsync(entity.Id);

@@ -11,7 +11,7 @@ namespace Doug.API.Controllers
             => Ok(new Resultados(objResult));
         protected IActionResult ResultCreted(object objResult)
             => Created("", new Resultados(objResult));
-        protected IActionResult resultBadRequest(string mensagem)
+        protected IActionResult ResultBadRequest(string mensagem)
             => BadRequest(mensagem);
     }
 }

@@ -12,6 +12,11 @@ namespace Doug.Infra.Repositories
             _unitOfWork = unitOfWork;
         }
 
+        //public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
+        //{
+        //    throw new NotImplementedException();
+        //}
+
         public IEnumerable<WeatherForecastEntity> BuscarWeatherForecast()
         {
             return _dbSet.Tolist();
