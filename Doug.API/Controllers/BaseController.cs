@@ -9,6 +9,10 @@ namespace Doug.API.Controllers
     {
         protected IActionResult ResultOk(object objResult)
             => Ok(new Resultados(objResult));
+        protected IActionResult ResultCreted(object objResult)
+            => Created("", new Resultados(objResult));
+        protected IActionResult resultBadRequest(string mensagem)
+            => BadRequest(mensagem);
     }
 }
 
