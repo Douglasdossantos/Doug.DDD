@@ -12,20 +12,20 @@ namespace Doug.Infra.Repositories
         public Repository(DbContext context)
         {
             _context = context;
-            _dbset = _context.Set<TEntity>();
+            _dbSet = _context.Set<TEntity>();
         }
 
         public async Task<IEnumerable<TEntity>> GetAllAsnc()
-            => await _dbset.ToListAsync();
+            => await _dbSet.ToListAsync();
         public async Task<TEntity?> GetByIdAsync(TPK id)
-            => await _dbset.FindAsync(id);
+            => await _dbSet.FindAsync(id);
 
         public async Task InsertAsync(TEntity entity)
             => await _dbset.AddAsync(entity);
-
+            
         public async Task UpdateAsync(TEntity entity)
         {
-            var result = await _dbset.FindAsync(entity.Id);
+            var result = await _dbSet.FindAsync(entity.Id);
             if (result != null) 
             {
                 _context.Entry(result).CurrentValues.SetValues(entity);
@@ -34,10 +34,10 @@ namespace Doug.Infra.Repositories
 
         public async Task DeleteAsync(TPK id)
         {
-            var entity = await _dbset.FindAsync(id);
+            var entity = await _dbSet.FindAsync(id);
             if (entity != null) 
             {
-                _dbset.Remove(entity);
+                _dbSet.Remove(entity);
                 await _context.SaveChangesAsync();
             }
         }
